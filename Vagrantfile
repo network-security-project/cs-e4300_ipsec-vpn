@@ -84,32 +84,32 @@ Vagrant.configure("2") do |config|
   end
 
   # Local server A
-  config.vm.define "server-a" do |server_a|
-    server_a.vm.box = "base"
-    server_a.vm.hostname = "server-a"
-    server_a.vbguest.auto_update = false
-    ## NETWORK INTERFACES
-    # Interface towards customer site network
-    server_a.vm.network "private_network",
-      ip: "10.1.0.99",
-      netmask: "255.255.0.0",
-      virtualbox__intnet: "intranet_a"
-    server_a.vm.provider "virtualbox" do |vb|
-      vb.name = "server-a"
-      # Change the default Vagrant ssh address
-      vb.customize ['modifyvm', :id, '--natnet1', '192.168.113.0/24']
-      # Performance
-      vb.cpus = 1
-      vb.memory = 512
-      vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-    end
-    # Server app
-    server_a.vm.provision :file, source: './apps/server_app',
-      destination: "server_app"
-    # Install dependencies and define the NAT
-    server_a.vm.provision :shell, run: "always", path: "scripts/local_server.sh"
-  end
+  # config.vm.define "server-a" do |server_a|
+  #   server_a.vm.box = "base"
+  #   server_a.vm.hostname = "server-a"
+  #   server_a.vbguest.auto_update = false
+  #   ## NETWORK INTERFACES
+  #   # Interface towards customer site network
+  #   server_a.vm.network "private_network",
+  #     ip: "10.1.0.98",
+  #     netmask: "255.255.0.0",
+  #     virtualbox__intnet: "intranet_a"
+  #   server_a.vm.provider "virtualbox" do |vb|
+  #     vb.name = "server-a"
+  #     # Change the default Vagrant ssh address
+  #     vb.customize ['modifyvm', :id, '--natnet1', '192.168.113.0/24']
+  #     # Performance
+  #     vb.cpus = 1
+  #     vb.memory = 512
+  #     vb.linked_clone = true
+  #     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+  #   end
+  #   # Server app
+  #   server_a.vm.provision :file, source: './apps/server_app',
+  #     destination: "server_app"
+  #   # Install dependencies and define the NAT
+  #   server_a.vm.provision :shell, run: "always", path: "scripts/local_server.sh"
+  # end
 
   # Client A1
   config.vm.define "client-a1" do |client_a1|
@@ -203,32 +203,32 @@ Vagrant.configure("2") do |config|
   end
 
   # Local server B
-  config.vm.define "server-b" do |server_b|
-    server_b.vm.box = "base"
-    server_b.vm.hostname = "server-b"
-    server_b.vbguest.auto_update = false
-    ## NETWORK INTERFACES
-    # Interface towards customer site network
-    server_b.vm.network "private_network",
-      ip: "10.1.0.99",
-      netmask: "255.255.0.0",
-      virtualbox__intnet: "intranet_b"
-    server_b.vm.provider "virtualbox" do |vb|
-      vb.name = "server-b"
-      # Change the default Vagrant ssh address
-      vb.customize ['modifyvm', :id, '--natnet1', '192.168.117.0/24']
-      # Performance
-      vb.cpus = 1
-      vb.memory = 512
-      vb.linked_clone = true
-      vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-    end
-    # Server app
-    server_b.vm.provision :file, source: './apps/server_app',
-      destination: "server_app"
-    # Install dependencies and define the NAT
-    server_b.vm.provision :shell, run: "always", path: "scripts/local_server.sh"
-  end
+  # config.vm.define "server-b" do |server_b|
+  #   server_b.vm.box = "base"
+  #   server_b.vm.hostname = "server-b"
+  #   server_b.vbguest.auto_update = false
+  #   ## NETWORK INTERFACES
+  #   # Interface towards customer site network
+  #   server_b.vm.network "private_network",
+  #     ip: "10.1.0.98",
+  #     netmask: "255.255.0.0",
+  #     virtualbox__intnet: "intranet_b"
+  #   server_b.vm.provider "virtualbox" do |vb|
+  #     vb.name = "server-b"
+  #     # Change the default Vagrant ssh address
+  #     vb.customize ['modifyvm', :id, '--natnet1', '192.168.117.0/24']
+  #     # Performance
+  #     vb.cpus = 1
+  #     vb.memory = 512
+  #     vb.linked_clone = true
+  #     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+  #   end
+  #   # Server app
+  #   server_b.vm.provision :file, source: './apps/server_app',
+  #     destination: "server_app"
+  #   # Install dependencies and define the NAT
+  #   server_b.vm.provision :shell, run: "always", path: "scripts/local_server.sh"
+  # end
 
   # Client B1
   config.vm.define "client-b1" do |client_b1|
