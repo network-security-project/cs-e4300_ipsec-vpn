@@ -3,7 +3,7 @@
 ## Traffic going to the internet
 route add default gw 172.30.30.1
 
-## Currently no NAT
+## Outbound NAT
 iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
 ## FULL CONE TO SERVER
 iptables -t nat -A PREROUTING -i enp0s8 -p tcp --source 172.18.18.18 --dport 8080 -j DNAT --to-destination 10.1.0.2:9999
