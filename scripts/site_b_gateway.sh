@@ -30,7 +30,7 @@ conn gateway-a-to-cloud
         left=172.18.18.18
         leftsubnet=172.18.18.18/32
         right=172.30.30.30
-        rightsubnet=172.48.48.48/28
+        rightsubnet=172.30.30.30/32
         ike=aes256-sha2_256-modp2048!
         esp=aes256-sha2_256!
         dpdaction=restart
