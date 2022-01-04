@@ -11,7 +11,7 @@ ip6tables-save > /etc/iptables/rules.v6
 ##install docker
 cd /home/vagrant
 curl -fsSL https://get.docker.com -o get-docker.sh
-sh ./get-docker.sh
+sudo sh ./get-docker.sh
 
 ##build image
 cd /home/vagrant/server_app
